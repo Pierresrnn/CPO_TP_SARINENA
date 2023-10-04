@@ -11,7 +11,7 @@ import java.util.Scanner;
  */
 public class TP1_convertisseur_SARINENA {
     // les différentes formules pour la convertion des temperature
-    
+
     public static double CelciusVersKelvin (double tCelcius) {
        double tKelvin = tCelcius + 273.15;
        return tKelvin;
@@ -41,17 +41,34 @@ public class TP1_convertisseur_SARINENA {
     
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Ecrit un premiere nombre");
+        System.out.println("Bonjour, saisissez une valeur");
         double reel = sc.nextDouble();
         System.out.println("la valeure reelle entrée est :" + reel);
-        double temperature_kelvin= reel + 273.15;
-        System.out.println("la temperature après la convetion en Kelvin est :" + temperature_kelvin);
-        
-        
-        
-        
-        
-        
-    }
-    
+        System.out.println("Saisissez la conversion que vous souhaiter effectuer :1)De Celcius Vers Kelvin \n 2) De Kelvin Vers Celcius \n 3) De Farenheit Vers Celcius \n 4) De Celcius Vers Farenheit \n 5) De Kelvin Vers Farenheit \n 6) De Farenheit Vers Kelvin");
+        int choix = sc.nextInt();
+        while (choix <1 || choix> 6){
+            System.out.println("resaisissez un nombre valide:");
+            choix= sc.nextInt();     
+        }
+        double resultat;
+        if (choix==1){
+            resultat=CelciusVersKelvin (reel);
+            System.out.println("la convertion donne "+ resultat+"Kelvin");
+        }else if (choix==2){
+            resultat=KelvinVersCelcius (reel);
+            System.out.println("la convertion donne "+ resultat+" Celcius");
+        }else if (choix==3){
+            resultat=FarenheitVersCelcius(reel);
+            System.out.println("la convertion donne "+ resultat+" Celcius");
+        }else if (choix==4){
+            resultat=CelciusVersFarenheit(reel);
+            System.out.println("la convertion donne "+ resultat+" Farenheit");
+        }else if (choix==5){
+            resultat=KelvinVersFarenheit(reel);
+            System.out.println("la convertion donne "+ resultat+" Farenheit");
+        }else if (choix==6){
+            resultat= FarenheitVersKelvin(reel);
+            System.out.println("la convertion donne "+ resultat+" Kelvin");
+        }   
+    }    
 }
