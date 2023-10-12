@@ -3,9 +3,10 @@ SARINENA, TDC , convetisseurObjet, 12/10/2023
  */
 package tp2_convertisseurobjet_sarinena;
 
-import static tp2_convertisseurobjet_sarinena.TP2_convertisseurObjet_SARINENA.KelvinVersCelcius;
-
-
+/**
+ *
+ * @author pierr
+ */
 public class Convertisseur {
 
     int nbConversions;
@@ -46,6 +47,6 @@ public class Convertisseur {
 
     @Override
     public String toString() {
-        return "nb de conversions" + nbConversions;
+        return "nb de conversions : " + nbConversions;
     }
 }
