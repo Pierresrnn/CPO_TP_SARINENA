@@ -8,7 +8,8 @@ package tp2_manip_sarinena;
  */
 public class Tartiflette {
     int nbCalories;
-    public Tartiflette(int nbCalories){
-        this.nbCalories= nbCalories;
+
+    public Tartiflette(int nbCalories) {
+        this.nbCalories = nbCalories;
     }
 }
