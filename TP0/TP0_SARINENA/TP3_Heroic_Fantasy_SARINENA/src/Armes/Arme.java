@@ -33,6 +33,6 @@ public abstract class Arme {
     public String toString() {
         return "Arme{" + "nom=" + nom + ", niveau_attaque=" + niveau_attaque + '}';
     }
+  
     
- 
 }
