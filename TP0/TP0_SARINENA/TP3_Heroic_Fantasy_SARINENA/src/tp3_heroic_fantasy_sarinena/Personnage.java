@@ -11,7 +11,15 @@ public abstract class Personnage {
     
     String nom;
     int niveau_de_vie;
+    boolean comfirme;
 
+    public Personnage(String nom, int niveau_de_vie, boolean comfirme) {
+        this.nom = nom;
+        this.niveau_de_vie = niveau_de_vie;
+        this.comfirme = comfirme;
+    }
+
+    
     public Personnage(String nom, int niveau_de_vie) {
         this.nom = nom;
         this.niveau_de_vie = niveau_de_vie;

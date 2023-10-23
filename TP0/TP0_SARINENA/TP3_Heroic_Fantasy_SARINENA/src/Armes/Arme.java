@@ -31,7 +31,7 @@ public abstract class Arme {
 
     @Override
     public String toString() {
-        return "Arme{" + "nom=" + nom + ", niveau_attaque=" + niveau_attaque + '}';
+        return "Arme: " + "nom= " + nom + ", niveau_attaque= " + niveau_attaque;
     }
   
     
