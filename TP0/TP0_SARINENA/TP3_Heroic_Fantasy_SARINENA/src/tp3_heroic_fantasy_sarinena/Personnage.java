@@ -7,7 +7,7 @@ package tp3_heroic_fantasy_sarinena;
  *
  * @author pierr
  */
-public class Personnage {
+public abstract class Personnage {
     
     String nom;
     int niveau_de_vie;
