@@ -1,7 +1,7 @@
 /*
 SARINENA, TDC , HEROIC FANTASY, 18/10/2023
  */
-package tp3_heroic_fantasy_sarinena;
+package Personngaes;
 
 /**
  *
@@ -15,7 +15,7 @@ public class Guerrier extends Personnage{
         super(nom, niveau_de_vie);
     }
 
-    public Guerrier(boolean cheval, String nom, int niveau_de_vie) {
+    public Guerrier(String nom, int niveau_de_vie,boolean cheval) {
         super(nom, niveau_de_vie);
         this.cheval = cheval;
     }

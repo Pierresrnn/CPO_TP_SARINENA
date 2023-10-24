@@ -1,7 +1,7 @@
 /*
 SARINENA, TDC , HEROIC FANTASY, 18/10/2023
  */
-package tp3_heroic_fantasy_sarinena;
+package Personngaes;
 
 /**
  *
@@ -35,6 +35,6 @@ public abstract class Personnage {
     
     @Override
     public String toString() {
-        return "Personnage{" + "nom=" + nom + ", niveau_de_vie=" + niveau_de_vie + '}';
+        return "Personnage: " + "nom= " + nom + ", niveau_de_vie= " + niveau_de_vie;
     }  
 }
