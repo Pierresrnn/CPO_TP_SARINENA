@@ -33,6 +33,10 @@ public abstract class Arme {
     public String toString() {
         return "Arme: " + "nom= " + nom + ", niveau_attaque= " + niveau_attaque;
     }
+
+    public String get() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
   
     
 }

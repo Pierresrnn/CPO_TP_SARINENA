@@ -70,7 +70,7 @@ public class TP3_Heroic_Fantasy_SARINENA {
             Personnage valeur_2 = Tab_2.get(i);
             System.out.println(valeur_2);
         }
-
+                
     }
 
 }
