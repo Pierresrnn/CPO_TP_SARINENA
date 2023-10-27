@@ -10,7 +10,7 @@ import java.util.Random;
  *
  * @author pierr
  */
-public class GrilleDeCellules {
+public class GrilleDeJeu {
 
     int nbLignes;
     int nbColonnes;
@@ -23,7 +23,7 @@ public class GrilleDeCellules {
      * @param nbLignes correspond aux nombres de lignes de la grille
      * @param nbColonnes correspond aux nombres de colonnes de la grille
      */
-    public GrilleDeCellules(int nbLignes, int nbColonnes) {
+    public GrilleDeJeu(int nbLignes, int nbColonnes) {
         this.nbLignes = nbLignes;
         this.nbColonnes = nbColonnes;
         this.matriceCellule = new CelluleLumineuse[nbLignes][nbColonnes];
@@ -171,7 +171,31 @@ public class GrilleDeCellules {
         return true;
     }
     }
+
+    /**
+     * Permet d'afficher l'état de la grille sous forme d'une représentation visuelle organisée
+     * @return renvoie la grille de jeu à afficher 
+     */
+    @Override
+    public String toString() {
+        String grille="   |";
+        for (int h=0;h<this.nbColonnes;h++){
+            grille=" "+h+" |";
+        }
+        grille += "\n";
+        for (int g=0;g<this.nbColonnes+1;g++){
+            grille= "----";
+        }
+        for (int f=0;f<this.nbLignes;f++){
+            grille=" "+f+" |";
+            for (int j=0;j<this.nbColonnes;j++){
+                grille= " "+this.matriceCellule+" |";
+            }
+        }
+        return grille;
+    }
     
+
     
     
 }

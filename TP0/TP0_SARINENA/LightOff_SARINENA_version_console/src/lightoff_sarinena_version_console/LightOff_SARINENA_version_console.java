@@ -26,5 +26,6 @@ public class LightOff_SARINENA_version_console {
         System.out.println(cellule_1);
         System.out.println(cellule_2);
     }
-
+    GrilleDeJeu GrilleDeCellules= new GrilleDeJeu(7,7);
+    System.out.println(GrilleDeCellules);
 }
