@@ -78,23 +78,24 @@ public class GrilleDeJeu {
                     }
                 }
             } else { //diagonale du bas vers le haut
-                for (int i = this.nbLignes - 1; 0 <= i; i--) {
-                    for (int j = 0; j < this.nbColonnes; j++) {
-                        if (j == i) {
-                            this.matriceCellule[i][i].activerCellule();
+                int cellule_parcourir = Math.min(this.nbLignes, this.nbColonnes);
+                for (int i = 0; i < cellule_parcourir; i++) {
+                    for (int j = 0; j < cellule_parcourir; j++) {
+                        if (cellule_parcourir - i - 1 == j) {
+                            this.matriceCellule[i][j].activerCellule();
                         }
                     }
                 }
             }
         }
     }
-
-    /**
-     * Permet de générer un plateau de cellules lumineuses de manière aléatoire
-     * à partir d’un nombre spécifié de tours.
-     *
-     * @param nbTours Correspond aux nombres de changement aléatoire effectué
-     */
+        /**
+         * Permet de générer un plateau de cellules lumineuses de manière
+         * aléatoire à partir d’un nombre spécifié de tours.
+         *
+         * @param nbTours Correspond aux nombres de changement aléatoire
+         * effectué
+         */
     public void melangerMatriceAleatoirement(int nbTours) {
         this.eteindreToutesLesCellules();
         for (int i = 0; i < nbTours; i++) {
@@ -137,65 +138,78 @@ public class GrilleDeJeu {
             }
         }
     }
-                /**
-                 * Permet d'activer la diagonale montante la grille en allumant
-                 * les cellules correspondantes.
-                 */
+
+    /**
+     * Permet d'activer la diagonale montante la grille en allumant les cellules
+     * correspondantes.
+     */
     public void activerDiagonaleMontante() {
-        for (int i = this.nbLignes - 1; 0 <= i; i--) {
-            for (int j = 0; j < this.nbColonnes; j++) {
-                if (j == i) {
-                    this.matriceCellule[i][i].activerCellule();
+        int cellule_parcourir = Math.min(this.nbLignes, this.nbColonnes);
+        for (int i = 0; i < cellule_parcourir; i++) {
+            for (int j = 0; j < cellule_parcourir; j++) {
+                if (cellule_parcourir - i - 1 == j) {
+                    this.matriceCellule[i][j].activerCellule();
 
                 }
             }
         }
     }
-    
+
     /**
      * Vérifie si toutes les cellules de la grille sont éteintes.
-     * @return Elle retourne true si toutes les cellules sont éteintes, et false sinon.
+     *
+     * @return Elle retourne true si toutes les cellules sont éteintes, et false
+     * sinon.
      */
-    public boolean cellulesToutesEteintes(){
-       int verif=0;
-    for (int i=0;i<this.nbLignes;i++){
-        for (int j=0;j<this.nbColonnes;j++){
-            if (this.matriceCellule[i][j].estEteint()==false){
-                verif+=1;
+    public boolean cellulesToutesEteintes() {
+        int verif = 0;
+        for (int i = 0; i < this.nbLignes; i++) {
+            for (int j = 0; j < this.nbColonnes; j++) {
+                if (this.matriceCellule[i][j].estEteint() == false) {
+                    verif += 1;
+                }
             }
         }
-    }
-    if (verif!=0){
-        return false;
-    }else{
-        return true;
-    }
+        if (verif != 0) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     /**
-     * Permet d'afficher l'état de la grille sous forme d'une représentation visuelle organisée
-     * @return renvoie la grille de jeu à afficher 
+     * Permet d'afficher l'état de la grille sous forme d'une représentation
+     * visuelle organisée
+     *
+     * @return renvoie la grille de jeu à afficher
      */
     @Override
     public String toString() {
-        String grille="   |";
-        for (int h=0;h<this.nbColonnes;h++){
-            grille=" "+h+" |";
+        String grille = "   |";
+        for (int h = 0; h < this.nbColonnes; h++) {
+            grille += " " + h + " |";
         }
         grille += "\n";
-        for (int g=0;g<this.nbColonnes+1;g++){
-            grille= "----";
+        for (int g = 0; g < this.nbColonnes + 1; g++) {
+            grille += "----";
         }
-        for (int f=0;f<this.nbLignes;f++){
-            grille=" "+f+" |";
-            for (int j=0;j<this.nbColonnes;j++){
-                grille= " "+this.matriceCellule+" |";
+        for (int f = 0; f < this.nbLignes * 2; f++) {
+            grille += "\n";
+            if (f % 2 == 0) {
+                for (int j = 0; j < this.nbColonnes + 1; j++) {
+                    if (j == 0) {
+                        grille += " " + f / 2 + " |";
+                    } else {
+                        grille += " " + this.matriceCellule[f / 2][j - 1].toString() + " |";
+                    }
+                }
+            } else {
+                for (int d = 0; d < this.nbColonnes + 1; d++) {
+                    grille += "----";
+                }
             }
         }
         return grille;
     }
-    
 
-    
-    
 }
