@@ -109,7 +109,7 @@ public class GrilleDeJeu {
      * @param idLigne correspond a la ligne choisie
      */
     public void activerLigneDeCellules(int idLigne) {
-        for (int k = 0; k < idLigne; k++) {
+        for (int k = 0; k < this.nbColonnes; k++) {
             this.matriceCellule[idLigne][k].activerCellule();
         }
     }
@@ -120,7 +120,7 @@ public class GrilleDeJeu {
      * @param idColonne correspond a la colonne choisie
      */
     public void activerColonneDeCellules(int idColonne) {
-        for (int l = 0; l < idColonne; l++) {
+        for (int l = 0; l < this.nbLignes; l++) {
             this.matriceCellule[l][idColonne].activerCellule();
         }
     }
