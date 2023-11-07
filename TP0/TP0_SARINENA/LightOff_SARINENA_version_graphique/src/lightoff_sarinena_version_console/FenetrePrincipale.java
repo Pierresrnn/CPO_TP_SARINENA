@@ -52,6 +52,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 public void actionPerformed(ActionEvent e) {
                     grille.activerLigneDeCellules(j);
                     repaint();
+                    FinDePartie();
                 }
             };
             bouton_ligne.addActionListener(ecouteurClick);
@@ -72,6 +73,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 public void actionPerformed(ActionEvent e) {
                     grille.activerColonneDeCellules(j);
                     repaint();
+                    FinDePartie();
                 }
             };
             bouton_colonne.addActionListener(ecouteurClick);
@@ -96,8 +98,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         if (this.grille.cellulesToutesEteintes()==true){
             Diagonale_Descandante.setEnabled(false);
             Diagonale_Montante.setEnabled(false);
-            
-            System.out.println("Tu as gagné chakal!!!!!!!");   
+            System.exit(0); 
+            System.out.println("Tu as gagné chakal!!!!!");
         }
     }
     /**
