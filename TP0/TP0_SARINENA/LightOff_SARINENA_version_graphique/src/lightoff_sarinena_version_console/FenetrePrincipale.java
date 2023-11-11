@@ -20,14 +20,31 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     GrilleDeJeu grille;
     int nbCoups;
     int i;
+    int nbLignes;
+    int nbColonnes;
+    int nbCoupsMAX;
 
     public FenetrePrincipale() {
 
         initComponents();
-        int nbLignes = 10;
-        int nbColonnes = 10;
+        nbLignes = 2;
+        nbColonnes = 2;
         this.grille = new GrilleDeJeu(nbLignes, nbColonnes);
+        CreationGrille();
         initialiserPartie();
+        FinDePartie();
+    }
+
+    public void initialiserPartie() {
+        grille.eteindreToutesLesCellules();
+        grille.melangerMatriceAleatoirement(10);
+    }
+
+    public void CreationGrille() {
+        PanneauGrille.removeAll();
+        Panneau_BoutonsHorizontals.removeAll();
+        Panneau_BoutonsVerticaux.removeAll();
+        PanneauBoutonsDifficulte.removeAll();
         PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
@@ -51,6 +68,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     grille.activerLigneDeCellules(j);
+                    nbCoups++;
                     repaint();
                     FinDePartie();
                 }
@@ -72,6 +90,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     grille.activerColonneDeCellules(j);
+                    nbCoups++;
                     repaint();
                     FinDePartie();
                 }
@@ -83,24 +102,85 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         getContentPane().add(Diagonale_Descandante, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 20, 1 * 40, 1 * 40));
         this.pack();
         this.revalidate();
-        getContentPane().add(Diagonale_Montante, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 490, 1 * 40, 1 * 40));
+        getContentPane().add(Diagonale_Montante, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 95 + nbLignes * 40, 1 * 40, 1 * 40));
         this.pack();
         this.revalidate();
 
-    }
+        PanneauBoutonsDifficulte.setLayout(new GridLayout(1, 3));
 
-    public void initialiserPartie() {
-        grille.eteindreToutesLesCellules();
-        grille.melangerMatriceAleatoirement(10);
+        JButton boutonFacile = new JButton("Facile");
+        JButton boutonMoyen = new JButton("Moyen");
+        JButton boutonDifficile = new JButton("Difficile");
+        PanneauBoutonsDifficulte.add(boutonFacile);
+        PanneauBoutonsDifficulte.add(boutonMoyen);
+        PanneauBoutonsDifficulte.add(boutonDifficile);
+
+        getContentPane().add(PanneauBoutonsDifficulte, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 95 + nbLignes * 40, 6 * 40, 1 * 40));
+        this.pack();
+        this.revalidate();
+
+        boutonFacile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                grille = new GrilleDeJeu(9, 9);
+                nbLignes = 9;
+                nbColonnes = 9;
+                nbCoupsMAX = 15;
+
+                CreationGrille();
+                initialiserPartie();
+                FinDePartie();
+
+            }
+        });
+
+        boutonMoyen.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                grille = new GrilleDeJeu(11, 11);
+                nbLignes = 11;
+                nbColonnes = 11;
+                nbCoupsMAX = 12;
+
+                CreationGrille();
+                initialiserPartie();
+                FinDePartie();
+
+            }
+        });
+
+        boutonDifficile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                grille = new GrilleDeJeu(15, 15);
+                nbLignes = 15;
+                nbColonnes = 15;
+                nbCoupsMAX = 10;
+                CreationGrille();
+                initialiserPartie();
+                FinDePartie();
+
+            }
+        }
+        );
     }
 
     public void FinDePartie() {
-        if (this.grille.cellulesToutesEteintes() == true) {
-            Diagonale_Descandante.setEnabled(false);
-            Diagonale_Montante.setEnabled(false);
+        if (nbCoups >= nbCoupsMAX) {
             this.dispose();
-            FenetreVictoire f = new FenetreVictoire();
-            f.setVisible(true);
+            FenetrePerdante r = new FenetrePerdante();
+            r.setVisible(true);
+
+        } else {
+            if (this.grille.cellulesToutesEteintes()) {
+                Diagonale_Descandante.setEnabled(false);
+                Diagonale_Montante.setEnabled(false);
+                System.out.println(nbCoups);
+                this.dispose();
+                FenetreVictoire f = new FenetreVictoire();
+                f.setVisible(true);
+                
+            }
         }
     }
 
@@ -118,6 +198,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         Panneau_BoutonsHorizontals = new javax.swing.JPanel();
         Diagonale_Descandante = new javax.swing.JButton();
         Diagonale_Montante = new javax.swing.JButton();
+        PanneauBoutonsDifficulte = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 600));
@@ -185,12 +266,28 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         getContentPane().add(Diagonale_Montante, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, 160, 80));
 
+        PanneauBoutonsDifficulte.setBackground(new java.awt.Color(255, 0, 0));
+
+        javax.swing.GroupLayout PanneauBoutonsDifficulteLayout = new javax.swing.GroupLayout(PanneauBoutonsDifficulte);
+        PanneauBoutonsDifficulte.setLayout(PanneauBoutonsDifficulteLayout);
+        PanneauBoutonsDifficulteLayout.setHorizontalGroup(
+            PanneauBoutonsDifficulteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        PanneauBoutonsDifficulteLayout.setVerticalGroup(
+            PanneauBoutonsDifficulteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 290, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(PanneauBoutonsDifficulte, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, -1, 290));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void Diagonale_DescandanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Diagonale_DescandanteActionPerformed
         // TODO add your handling code here:
         this.grille.activerDiagonaleDescendante();
+        nbCoups++;
         repaint();
         FinDePartie();
     }//GEN-LAST:event_Diagonale_DescandanteActionPerformed
@@ -198,6 +295,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private void Diagonale_MontanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Diagonale_MontanteActionPerformed
         // TODO add your handling code here:
         this.grille.activerDiagonaleMontante();
+        nbCoups++;
         repaint();
         FinDePartie();
     }//GEN-LAST:event_Diagonale_MontanteActionPerformed
@@ -216,16 +314,24 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FenetrePrincipale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FenetrePrincipale.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FenetrePrincipale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FenetrePrincipale.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FenetrePrincipale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FenetrePrincipale.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FenetrePrincipale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FenetrePrincipale.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -240,6 +346,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Diagonale_Descandante;
     private javax.swing.JButton Diagonale_Montante;
+    private javax.swing.JPanel PanneauBoutonsDifficulte;
     private javax.swing.JPanel PanneauGrille;
     private javax.swing.JPanel Panneau_BoutonsHorizontals;
     private javax.swing.JPanel Panneau_BoutonsVerticaux;

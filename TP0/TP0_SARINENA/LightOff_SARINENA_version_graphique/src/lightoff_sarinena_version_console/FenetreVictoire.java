@@ -1,6 +1,5 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+SARINENA, TDC , LightOff_version_graphique, 06/11/2023
  */
 package lightoff_sarinena_version_console;
 
@@ -13,8 +12,12 @@ public class FenetreVictoire extends javax.swing.JFrame {
     /**
      * Creates new form FenetreVictoire
      */
+    FenetrePrincipale info;
+    int nbCoups;
+    
     public FenetreVictoire() {
         initComponents();
+        
 
     }
 
@@ -28,14 +31,14 @@ public class FenetreVictoire extends javax.swing.JFrame {
     private void initComponents() {
 
         fenetre_victoire = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        bouton_1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        fenetre_victoire.setBackground(new java.awt.Color(255, 0, 0));
+        fenetre_victoire.setBackground(new java.awt.Color(51, 255, 0));
 
-        jLabel1.setBackground(new java.awt.Color(255, 0, 0));
-        jLabel1.setText("Tu as gagné CHAKAL!!!!!!");
+        bouton_1.setBackground(new java.awt.Color(255, 0, 0));
+        bouton_1.setText("Tu as gagné CHAKAL!!!!!!");
 
         javax.swing.GroupLayout fenetre_victoireLayout = new javax.swing.GroupLayout(fenetre_victoire);
         fenetre_victoire.setLayout(fenetre_victoireLayout);
@@ -43,14 +46,14 @@ public class FenetreVictoire extends javax.swing.JFrame {
             fenetre_victoireLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fenetre_victoireLayout.createSequentialGroup()
                 .addContainerGap(41, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(bouton_1)
                 .addGap(36, 36, 36))
         );
         fenetre_victoireLayout.setVerticalGroup(
             fenetre_victoireLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fenetre_victoireLayout.createSequentialGroup()
                 .addGap(63, 63, 63)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bouton_1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
@@ -59,16 +62,16 @@ public class FenetreVictoire extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(97, Short.MAX_VALUE)
+                .addContainerGap(136, Short.MAX_VALUE)
                 .addComponent(fenetre_victoire, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(95, 95, 95))
+                .addGap(56, 56, 56))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(59, 59, 59)
                 .addComponent(fenetre_victoire, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(52, 52, 52))
+                .addGap(36, 36, 36))
         );
 
         pack();
@@ -118,7 +121,7 @@ public class FenetreVictoire extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel bouton_1;
     private javax.swing.JPanel fenetre_victoire;
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
