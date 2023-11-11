@@ -83,7 +83,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         getContentPane().add(Diagonale_Descandante, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 20, 1 * 40, 1 * 40));
         this.pack();
         this.revalidate();
-        getContentPane().add(Diagonale_Montante, new org.netbeans.lib.awtextra.AbsoluteConstraints(48,490 , 1 * 40, 1 * 40));
+        getContentPane().add(Diagonale_Montante, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 490, 1 * 40, 1 * 40));
         this.pack();
         this.revalidate();
 
@@ -93,15 +93,17 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         grille.eteindreToutesLesCellules();
         grille.melangerMatriceAleatoirement(10);
     }
-    
-    public void FinDePartie(){
-        if (this.grille.cellulesToutesEteintes()==true){
+
+    public void FinDePartie() {
+        if (this.grille.cellulesToutesEteintes() == true) {
             Diagonale_Descandante.setEnabled(false);
             Diagonale_Montante.setEnabled(false);
-            System.exit(0); 
-            System.out.println("Tu as gagné chakal!!!!!");
+            this.dispose();
+            FenetreVictoire f = new FenetreVictoire();
+            f.setVisible(true);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
